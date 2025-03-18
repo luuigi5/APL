@@ -9,24 +9,36 @@ services:
     depends_on:
       - db
     volumes:
-      - ./python_app:/app  # <--- Mappa la cartella locale nel container
-    working_dir: /app  # <--- Imposta la cartella di lavoro
+      - ./python_app:/app
+    working_dir: /app
+    networks:
+      - app-network  # Aggiungi questa riga
 
   go_app:
     build:
       context: ./go_app
     depends_on:
       - db
+    networks:
+      - app-network  # Aggiungi questa riga
 
   db:
     image: postgres:15-alpine
     environment:
       POSTGRES_DB: housemanager
       POSTGRES_PASSWORD: housemanager
+      POSTGRES_USER: postgres  # Aggiungi questa riga per assicurarti che l'utente sia corretto
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    networks:
+      - app-network  # Aggiungi questa riga
 
 volumes:
   postgres_data:
+
+networks:
+  app-network:
+    driver: bridge

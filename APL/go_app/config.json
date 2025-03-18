@@ -1,0 +1,10 @@
+{
+    "dbtype": "postgres",
+    "host": "db",
+    "port": 5432,
+    "user": "postgres",
+    "password": "housemanager",
+    "dbname": "housemanager",
+    "sslmode": "disable"
+  }
+  
