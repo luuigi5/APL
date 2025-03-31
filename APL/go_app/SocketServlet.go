@@ -8,17 +8,7 @@ import (
 	"go_app/Repository"
 )
 
-type Request struct {
-	Action string `json:"action"`
-	Data Data `json:"data"`
-}
 
-//definisco una tipologia di richiesta che mi potrebbe arrivare dal modulo python
-type Data struct {
-	Username string `json:"username"`
-	Email string `json:"email"`
-	Password string `json:"password"`
-}
 
 func StartSocketServer() {
 	port := "8091"
@@ -52,40 +42,44 @@ func ManageRequest(conn net.Conn){
     
 	var request Request
     err = json.Unmarshal(jsonData, &request)
-    var response string
+    var response Response
     if err != nil {
-        response = fmt.Sprintf("Errore nel parsing JSON: %v", err)
-    } else {
+		response = GetResponse(500, "Error", "Non è stato possibile inserire l'utente", request)
+	} else {
         response = ExecuteActionByRequest(request)
     }
     
-    _, err = conn.Write([]byte(response))
+	responseBytes, err := json.Marshal(response)
+	if err != nil {
+		fmt.Printf("Errore nella serializzazione JSON: %v\n", err)
+		return
+	}
+
+    _, err = conn.Write([]byte(responseBytes))
     if err != nil {
         fmt.Printf("Errore durante l'invio della risposta: %v\n", err)
     }
 	defer conn.Close()
 }
 
-func ExecuteActionByRequest(req Request)(string){
-    switch req.Action {
-    case "createUser":
-        fmt.Printf("Creazione utente: %s\n", req.Data.Username)
-		user := Entity.Users {
-			Username : req.Data.Username,
-			Email : req.Data.Email,
-			Password : req.Data.Password,
-		}
-
-		db, dbErr := OpenDBConnection()
-		if dbErr != nil {
-			return "Errore durante l'apertura della connessione"
-			
-		}
-		err := Repository.AddUser(user, db)
-		if err != nil{
-			return "Errore nell'aggiunta dell'utente"
-		}
-		return "Utente inserito"
+func ExecuteActionByRequest(req Request)(Response){
+	db, dbErr := OpenDBConnection()
+	if dbErr != nil {
+		return GetResponse(500, "Error", "Non è stato possibile inserire l'utente", req)
 	}
-	return "Action non gestita"
+    switch req.Action {
+		case "createUser":
+			user := Entity.Users {
+				Username : req.Data.Username,
+				Email : req.Data.Email,
+				Password : req.Data.Password,
+			}
+			err := Repository.AddUser(user, db)
+			if err != nil{
+				return GetResponse(500, "Error", "Non è stato possibile inserire l'utente", req)
+			}
+			return GetResponse(200, "Success", "Utente inserito", req)
+		}
+	
+	return GetResponse(500, "Error", "Action non gestita", req)
 }

@@ -16,8 +16,8 @@ def createSocket():
         request = {
             "action": "createUser",
             "data": {
-                "username": "Jhonny",
-                "email": "renthouse@bnb.it",
+                "username": "Jack",
+                "email": "rentapartment@bnb.it",
                 "password": "RentHouse"
             }
         }

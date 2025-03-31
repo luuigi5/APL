@@ -18,6 +18,26 @@ type dbParameters struct{
 	Sslmode string `json:"sslmode"`
 }
 
+type Response struct {
+	Code int `json:"code"`
+	Status string `json:"status"`
+	Description string `json:"description"`
+	Request Request `json:"request"`
+}
+
+type Request struct {
+	Action string `json:"action"`
+	Data Data `json:"data"`
+}
+
+//definisco una tipologia di richiesta che mi potrebbe arrivare dal modulo python
+type Data struct {
+	Username string `json:"username"`
+	Email string `json:"email"`
+	Password string `json:"password"`
+}
+
+
 // funzione che prende i parametri di connessione del db dal file di configurazione
 func getDbConfig(filename string)(dbParameters, error){
 	var parametri dbParameters
@@ -59,4 +79,13 @@ func OpenDBConnection()(*sql.DB, error){
 	}
 	fmt.Println("Connessione stabilita!")
 	return db, err
+}
+
+func GetResponse(code int, status string, description string, request Request)(Response){
+	 return Response {
+		Code: code,
+		Status: status,
+		Description: description, 
+		Request: request,	
+	}
 }
