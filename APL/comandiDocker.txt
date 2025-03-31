@@ -1,0 +1,33 @@
+per aprire la bash di python
+	docker exec -it apl-python_app-1 bash
+	python
+per attivare il container
+	docker start apl-python_app-1
+
+Per vedere i container su docker
+	docker ps -a	
+	
+	docker exec -it apl-db-1 psql -U postgres -d housemanager
+	docker exec -it apl-go_app-1 bash
+	
+Per ricreare i container	
+docker-compose down
+docker-compose up -d --build	
+
+
+docker build -t go_app .
+docker run go_app
+
+per ottenere il nome delle immagini
+	docker images
+
+per eseguire il file go
+	1)docker-compose build go_app
+	2)docker-compose up go_app     docker run apl-go_app(in modalità standalone)
+	
+per buildare python (da dentro la cartella py)
+	python_app>docker build -t apl-python_app .
+	docker run -p 5000:5000 apl-python_app
+	
+	docker-compose build python_app
+	docker-compose up python_app

@@ -8,10 +8,21 @@ CREATE TABLE Users (
 
 CREATE TABLE Reservations (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
+    name VARCHAR(50),
     idUser INT NOT NULL,
+    idStructure INT NOT NULL,
     revenue DECIMAL(10,2) NOT NULL,
     startDate VARCHAR(50) NOT NULL,
     endDate VARCHAR(50) NOT NULL,
-    FOREIGN KEY (idUser) REFERENCES Users(id) ON DELETE CASCADE
+    FOREIGN KEY (idUser) REFERENCES Users(id) ON DELETE CASCADE,
+    FOREIGN KEY (idStructure) REFERENCES Structures(id) ON DELETE CASCADE
+);
+
+CREATE TABLE Structures(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50), 
+    idUser INT NOT NULL,
+    type VARCHAR(50), 
+    rooms INT,
+    FOREIGN KEY (idUser) REFERENCES Users(id) ON DELETE CASCADE,
 );

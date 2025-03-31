@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+"""from flask import Flask, jsonify
 
 app = Flask(__name__)
 
@@ -7,4 +7,25 @@ def hello():
     return jsonify(message="Hello from Pythonvfvf!")
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000)"""
+
+from socketClient import createSocket
+import time
+
+def main():
+    print("Avvio client socket")
+    createSocket()
+    while True:
+        time.sleep(10)
+
+    """while True:
+        try:
+            createSocket()
+        except Exception as e:
+            print(f"Errore durante l'esecuzione: {e}")
+
+        #print("Attesa prima del prossimo tentativo...")
+        #time.sleep(10)"""
+
+if __name__ == '__main__':
+    main()

@@ -7,12 +7,12 @@ import(
 )
 
 func AddReservation(reservation Entity.Reservations, db *sql.DB)(error){
-	sqlStatement := `INSERT INTO reservations (name, idUser, revenue, startDate, endDate)
-		VALUES ($1, $2, $3, $4, $5)
+	sqlStatement := `INSERT INTO reservations (name, idUser, idStructure, revenue, startDate, endDate)
+		VALUES ($1, $2, $3, $4, $5, $6)
 		RETURNING id`
 	id := 0
-	err := db.QueryRow(sqlStatement, reservation.Name, reservation.IdUser, reservation.Revenue, 
-		reservation.StartDate, reservation.EndDate).Scan(&id)
+	err := db.QueryRow(sqlStatement, reservation.Name, reservation.IdUser, reservation.IdStructure,
+		reservation.Revenue, reservation.StartDate, reservation.EndDate).Scan(&id)
 	if err != nil {
         return fmt.Errorf("errore durante l'inserimento della prenotazione: %w", err)
 	}
@@ -36,7 +36,7 @@ func LoadReservations(idUser int ,db *sql.DB)([]Entity.Reservations, error){
 	var reservations []Entity.Reservations
 	for rows.Next(){
 		var reservation Entity.Reservations
-		err = rows.Scan(&reservation.Name, &reservation.IdUser, &reservation.Revenue, 
+		err = rows.Scan(&reservation.Id, &reservation.Name, &reservation.IdUser, &reservation.IdStructure, &reservation.Revenue, 
 			&reservation.StartDate, &reservation.EndDate)
 		if err != nil {
 			return nil, err
@@ -50,7 +50,7 @@ func LoadReservations(idUser int ,db *sql.DB)([]Entity.Reservations, error){
 func GetReservationById(reservationId int, db *sql.DB)(Entity.Reservations, error){
 	sqlQuery := `SELECT * FROM reservations WHERE id = $1`
 	var res Entity.Reservations
-	err := db.QueryRow(sqlQuery, reservationId).Scan(&res.Name, &res.IdUser, &res.Revenue, &res.StartDate, &res.EndDate)
+	err := db.QueryRow(sqlQuery, reservationId).Scan(&res.Id, &res.Name, &res.IdUser, &res.IdStructure, &res.Revenue, &res.StartDate, &res.EndDate)
 	if err != nil{
 		return res, err
 	}
