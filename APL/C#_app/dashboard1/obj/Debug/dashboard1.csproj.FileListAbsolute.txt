@@ -1,0 +1,11 @@
+C:\Users\Giovanni\Desktop\APL\APL\C#_app\dashboard1\bin\Debug\dashboard1.exe.config
+C:\Users\Giovanni\Desktop\APL\APL\C#_app\dashboard1\bin\Debug\dashboard1.exe
+C:\Users\Giovanni\Desktop\APL\APL\C#_app\dashboard1\bin\Debug\dashboard1.pdb
+C:\Users\Giovanni\Desktop\APL\APL\C#_app\dashboard1\obj\Debug\dashboard1.csproj.AssemblyReference.cache
+C:\Users\Giovanni\Desktop\APL\APL\C#_app\dashboard1\obj\Debug\dashboard1.csproj.SuggestedBindingRedirects.cache
+C:\Users\Giovanni\Desktop\APL\APL\C#_app\dashboard1\obj\Debug\dashboard1.Form1.resources
+C:\Users\Giovanni\Desktop\APL\APL\C#_app\dashboard1\obj\Debug\dashboard1.Properties.Resources.resources
+C:\Users\Giovanni\Desktop\APL\APL\C#_app\dashboard1\obj\Debug\dashboard1.csproj.GenerateResource.cache
+C:\Users\Giovanni\Desktop\APL\APL\C#_app\dashboard1\obj\Debug\dashboard1.csproj.CoreCompileInputs.cache
+C:\Users\Giovanni\Desktop\APL\APL\C#_app\dashboard1\obj\Debug\dashboard1.exe
+C:\Users\Giovanni\Desktop\APL\APL\C#_app\dashboard1\obj\Debug\dashboard1.pdb
