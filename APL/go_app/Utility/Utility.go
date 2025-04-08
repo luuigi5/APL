@@ -1,11 +1,12 @@
-package main
+package Utility
 
 import(
     "database/sql"
     "encoding/json"
     "fmt"
     "os"
-    _ "github.com/lib/pq" 
+    _ "github.com/lib/pq"
+	"go_app/Entity"
 )
 
 type dbParameters struct{
@@ -23,6 +24,7 @@ type Response struct {
 	Status string `json:"status"`
 	Description string `json:"description"`
 	Request Request `json:"request"`
+	Elements *GetElement `json:"elements,omitempty"`
 }
 
 type Request struct {
@@ -32,10 +34,27 @@ type Request struct {
 
 //definisco una tipologia di richiesta che mi potrebbe arrivare dal modulo python
 type Data struct {
-	Username string `json:"username"`
-	Email string `json:"email"`
-	Password string `json:"password"`
+	Username string `json:"username,omitempty"`
+	Email string `json:"email,omitempty"`
+	Password string `json:"password,omitempty"`
+	IdUser int `json:"idUser,omitempty"`
+	IdReservation int `json:"idReservation,omitempty"`
+	NameReservation string `json:"nameReservation,omitempty"`
+	Revenue float64 `json:"revenue,omitempty"`
+	StartDate string `json:"startDate,omitempty"` 
+	EndDate string `json:"endDate,omitempty"`
+	IdStructure int `json:"idStructure,omitempty"`
+	NameStructure string `json:"nameStructure,omitempty"`
+	Type string `json:"type,omitempty"`
+	Rooms int `json:"rooms,omitempty"`
 }
+
+type GetElement struct {
+    Users []Entity.Users `json:"users,omitempty"`
+	Structures []Entity.Structures `json:"structures,omitempty"`
+	Reservations []Entity.Reservations `json:"reservations,omitempty"`
+}
+
 
 
 // funzione che prende i parametri di connessione del db dal file di configurazione
@@ -81,11 +100,12 @@ func OpenDBConnection()(*sql.DB, error){
 	return db, err
 }
 
-func GetResponse(code int, status string, description string, request Request)(Response){
+func CreateResponse(code int, status string, description string, request Request, elements *GetElement)(Response){
 	 return Response {
 		Code: code,
 		Status: status,
 		Description: description, 
-		Request: request,	
+		Request: request,
+		Elements: elements,
 	}
 }

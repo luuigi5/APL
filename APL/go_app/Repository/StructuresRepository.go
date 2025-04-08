@@ -6,17 +6,35 @@ import(
 	"database/sql"
 )
 
-//TODO RITORNARE ANCHE ID COME TIPO DI RITORNO
-func AddStructure(structure Entity.Structures, db *sql.DB)(error){
+func AddStructure(structure Entity.Structures, db *sql.DB)(int, error){
 	sqlStatement := `INSERT INTO structures (name, idUser, type, rooms)
 		VALUES ($1, $2, $3, $4)
 		RETURNING id`
 	id := 0
 	err := db.QueryRow(sqlStatement, structure.Name, structure.IdUser, structure.Type, structure.Rooms).Scan(&id)
 	if err != nil {
-        return fmt.Errorf("errore durante l'inserimento della struttura: %w", err)
+        return 0, fmt.Errorf("errore durante l'inserimento della struttura: %w", err)
 	}
 	fmt.Printf("Struttura : %s inserita correttament con id: %d", structure.Name, id)
+	return id, nil
+}
+
+func UpdateStructure(structure Entity.Structures, db *sql.DB)(error){
+	sqlStatement := `UPDATE structures SET name=$1, idUser=$2, type=$3, rooms=$4 WHERE id = $5`
+	result, err := db.Exec(sqlStatement, structure.Name, structure.IdUser, structure.Type, structure.Rooms, structure.Id)
+	if err != nil {
+		return fmt.Errorf("errore durante l'aggiornamento della struttura: %w", err)
+	}
+    rowsAffected, err := result.RowsAffected()
+    if err != nil {
+        return fmt.Errorf("errore nella verifica delle righe modificate: %w", err)
+    }
+    if rowsAffected == 0 {
+        return fmt.Errorf("nessuna struttura trovata con id %d", structure.Id)
+    }
+	fmt.Printf("La struttura : %s è stata aggiornata correttamente", structure.Name)
+    return nil
+
 	return nil
 }
 
@@ -26,9 +44,9 @@ func DeleteStructure(id int, db *sql.DB)(error){
 	return err
 }
 
-func LoadStructures(idUser int ,db *sql.DB)([]Entity.Structures, error){
-	sqlQuery := `SELECT * FROM structures WHERE idUser = $1`
-	rows,err := db.Query(sqlQuery, idUser)
+func LoadStructures(db *sql.DB)([]Entity.Structures, error){
+	sqlQuery := `SELECT * FROM structures`
+	rows,err := db.Query(sqlQuery)
 	if err != nil{
 		return nil, err
 	}
@@ -46,13 +64,15 @@ func LoadStructures(idUser int ,db *sql.DB)([]Entity.Structures, error){
 	return structures, nil
 }
 
-func GetStructureById(structureId int, db *sql.DB)(Entity.Structures, error){
+func GetStructureById(structureId int, db *sql.DB)([]Entity.Structures, error){
 	sqlQuery := `SELECT * FROM structures WHERE id = $1`
-	var res Entity.Structures
-	err := db.QueryRow(sqlQuery, structureId).Scan(&res.Id, &res.Name, &res.IdUser, &res.Type, &res.Rooms)
+	var structure Entity.Structures
+	var structures []Entity.Structures
+	err := db.QueryRow(sqlQuery, structureId).Scan(&structure.Id, &structure.Name, &structure.IdUser, &structure.Type, &structure.Rooms)
 	if err != nil{
-		return res, err
+		return structures, err
 	}
-	return res, nil
+	structures = append(structures, structure)
+	return structures, nil
 }
 

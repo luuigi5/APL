@@ -1,27 +1,21 @@
 """from flask import Flask, jsonify
-from socket_server import createSocket
 
-# app = Flask(__name__)
-print(f"Avvio app...")
+app = Flask(__name__)
 
-# @app.route('/hello')
-# def hello():
-#     return jsonify(message="Hello from Pythonvfvf!")
-def main():
-    createSocket()
+@app.route('/hello')
+def hello():
+    return jsonify(message="Hello from Pythonvfvf!")
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)"""
 
-from socketClient import createSocket
-from socket_server import createServerSocket
-
+from socketClient import doOperation
 import time
 
 def main():
     print("Avvio client socket")
-    # createSocket()
-    createServerSocket()
+    #createSocket()
+    doOperation()
     while True:
         time.sleep(10)
 
@@ -36,4 +30,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    # app.run(host='0.0.0.0', port=5000)

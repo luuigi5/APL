@@ -7,17 +7,37 @@ import(
 	"database/sql"
 )
 
-func AddUser(utente Entity.Users, db *sql.DB)(error){
+func AddUser(utente Entity.Users, db *sql.DB)(int, error){
 	sqlStatement := `INSERT INTO users (username, email, password, created_at)
 		VALUES ($1, $2, $3, $4)
 		RETURNING id`
 	id := 0
 	err := db.QueryRow(sqlStatement, utente.Username, utente.Email, utente.Password, time.Now()).Scan(&id)
 	if err != nil {
-        return fmt.Errorf("errore durante l'inserimento dell'utente: %w", err)
+        return 0, fmt.Errorf("errore durante l'inserimento dell'utente: %w", err)
 	}
 	fmt.Printf("Utente con username: %s inserito correttament con id: %d", utente.Username, id)
-	return nil
+	return id, nil
+}
+
+func UpdateUser(utente Entity.Users, db *sql.DB)(error){
+	sqlStatement := `UPDATE users SET username = $1, email =$2, password=$3, created_at=$4 WHERE id= $5`
+    result, err := db.Exec(sqlStatement, utente.Username, utente.Email, utente.Password, time.Now(), utente.Id)
+    if err != nil {
+        return fmt.Errorf("errore durante l'aggiornamento dell'utente: %w", err)
+    }
+    
+    rowsAffected, err := result.RowsAffected()
+    if err != nil {
+        return fmt.Errorf("errore nella verifica delle righe modificate: %w", err)
+    }
+    
+    if rowsAffected == 0 {
+        return fmt.Errorf("nessun utente trovato con id %d", utente.Id)
+    }
+    
+    fmt.Printf("Utente con username: %s aggiornato correttamente", utente.Username)
+    return nil
 }
 
 func DeleteUser(id int, db *sql.DB)(error){
@@ -47,13 +67,15 @@ func LoadUsers(db *sql.DB)([]Entity.Users, error){
 	return users, nil
 }
 
-func GetUserById(userId int, db *sql.DB)(Entity.Users, error){
+func GetUserById(userId int, db *sql.DB)([]Entity.Users, error){
 	sqlQuery := `SELECT * FROM users WHERE id = $1`
+	var users []Entity.Users
 	var user Entity.Users
 	err := db.QueryRow(sqlQuery, userId).Scan(&user.Id, &user.Username, &user.Email, &user.Password, &user.CreatedAt)
 	if err != nil{
-		return user, err
+		return users, err
 	}
-	return user, nil
+	users = append(users, user)
+	return users, nil
 }
 
