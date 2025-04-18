@@ -39,12 +39,13 @@ type Data struct {
 	Password string `json:"password,omitempty"`
 	IdUser int `json:"idUser,omitempty"`
 	IdReservation int `json:"idReservation,omitempty"`
-	NameReservation string `json:"nameReservation,omitempty"`
 	Revenue float64 `json:"revenue,omitempty"`
 	StartDate string `json:"startDate,omitempty"` 
 	EndDate string `json:"endDate,omitempty"`
 	IdStructure int `json:"idStructure,omitempty"`
 	NameStructure string `json:"nameStructure,omitempty"`
+	City string `json:"city,omitempty"`
+	Address string `json:"address,omitempty"`
 	Type string `json:"type,omitempty"`
 	Rooms int `json:"rooms,omitempty"`
 }
@@ -82,7 +83,7 @@ func OpenDBConnection()(*sql.DB, error){
 	if err != nil{
         return nil, fmt.Errorf("errore estrazione parametri: %v", err)
 	}
-	fmt.Print(param)
+	//fmt.Print(param)
 
 	connectionString:= fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=%s", param.Host, param.Port, param.User,
 	 param.Password, param.Dbname, param.Sslmode)
@@ -96,7 +97,7 @@ func OpenDBConnection()(*sql.DB, error){
 	if err != nil {
 		return nil, err
 	}
-	fmt.Println("Connessione stabilita!")
+	//fmt.Println("Connessione stabilita!")
 	return db, err
 }
 

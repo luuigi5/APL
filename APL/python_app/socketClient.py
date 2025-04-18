@@ -17,11 +17,17 @@ def createSocket():
 
 def doOperation():
     try:
-        utente = User("Sabrina", "sabsid@renthouse.it", "apartamentPwdSyd", None)
-        #N.B. per ogni operazione va ricreato il Socket
-        """CREA UTENTE
+        utente = User("Al", "al@renthouse.it", "apartamentPwdSyd", None)
         clientSocket = createSocket()
-        utente = User("Sabrina", "sabsid@renthouse.it", "apartamentPwdSyd", None)
+        responseLogin = json.dumps(utente.login(clientSocket))
+        clientSocket.close()
+        print("Risposta: ", json.dumps(responseLogin))
+
+
+        #N.B. per ogni operazione va ricreato il Socket
+        #CREA UTENTE
+        """clientSocket = createSocket()
+        utente = User("Al", "al@renthouse.it", "apartamentPwdSyd", None)
         response = utente.aggiungiUtente(clientSocket)
         print("SERVER Risposta (JSON): ", json.dumps(response))
         clientSocket.close()"""
@@ -52,17 +58,17 @@ def doOperation():
         print("Utenti: ", response)
         clientSocket.close()"""
 
-        clientSocket=createSocket()
-        structure = Structure("Wallaby", 138, "Hostel", 50)
+        """clientSocket=createSocket()
+        structure = Structure("Wallaby", utente.idUser, "Sidney", "PSherman42", "Hostel", 50, None)
         response = structure.aggiungiStruttura(clientSocket)
         print("Creazione struttura: ", response)
         clientSocket.close()
 
         clientSocket=createSocket()
-        reservation=Reservation("PrenotazioneCasa", 138, structure.idStructure, 150, "08-04-2025", "10-04-2025",)
+        reservation=Reservation(utente.idUser, structure.idStructure, 150, "08-04-2025", "10-04-2025", None)
         response = reservation.aggiungiPrenotazione(clientSocket)
         print("Creazione prenotazione: ", response)
-        clientSocket.close()
+        clientSocket.close()"""
 
 
     except Exception as e:

@@ -2,17 +2,16 @@ package Repository
 
 import(
 	"fmt"
-	"time"
 	"go_app/Entity"
 	"database/sql"
 )
 
 func AddUser(utente Entity.Users, db *sql.DB)(int, error){
-	sqlStatement := `INSERT INTO users (username, email, password, created_at)
-		VALUES ($1, $2, $3, $4)
+	sqlStatement := `INSERT INTO users (username, email, password)
+		VALUES ($1, $2, $3)
 		RETURNING id`
 	id := 0
-	err := db.QueryRow(sqlStatement, utente.Username, utente.Email, utente.Password, time.Now()).Scan(&id)
+	err := db.QueryRow(sqlStatement, utente.Username, utente.Email, utente.Password).Scan(&id)
 	if err != nil {
         return 0, fmt.Errorf("errore durante l'inserimento dell'utente: %w", err)
 	}
@@ -21,8 +20,8 @@ func AddUser(utente Entity.Users, db *sql.DB)(int, error){
 }
 
 func UpdateUser(utente Entity.Users, db *sql.DB)(error){
-	sqlStatement := `UPDATE users SET username = $1, email =$2, password=$3, created_at=$4 WHERE id= $5`
-    result, err := db.Exec(sqlStatement, utente.Username, utente.Email, utente.Password, time.Now(), utente.Id)
+	sqlStatement := `UPDATE users SET username = $1, email=$2, password=$3 WHERE id= $5`
+    result, err := db.Exec(sqlStatement, utente.Username, utente.Email, utente.Password, utente.Id)
     if err != nil {
         return fmt.Errorf("errore durante l'aggiornamento dell'utente: %w", err)
     }
@@ -57,7 +56,7 @@ func LoadUsers(db *sql.DB)([]Entity.Users, error){
 	//casting delle rows provenienti dalla query in oggetti users
 	for rows.Next(){
 		var user Entity.Users
-		err = rows.Scan(&user.Id, &user.Username, &user.Email, &user.Password, &user.CreatedAt)
+		err = rows.Scan(&user.Id, &user.Username, &user.Email, &user.Password)
 		if err != nil {
 			return nil, err
 		}
@@ -71,7 +70,7 @@ func GetUserById(userId int, db *sql.DB)([]Entity.Users, error){
 	sqlQuery := `SELECT * FROM users WHERE id = $1`
 	var users []Entity.Users
 	var user Entity.Users
-	err := db.QueryRow(sqlQuery, userId).Scan(&user.Id, &user.Username, &user.Email, &user.Password, &user.CreatedAt)
+	err := db.QueryRow(sqlQuery, userId).Scan(&user.Id, &user.Username, &user.Email, &user.Password)
 	if err != nil{
 		return users, err
 	}
@@ -79,3 +78,14 @@ func GetUserById(userId int, db *sql.DB)([]Entity.Users, error){
 	return users, nil
 }
 
+func GetUserByUsername(username string, db *sql.DB)([]Entity.Users, error){
+	sqlQuery := `SELECT * FROM users WHERE username = $1`
+	var users []Entity.Users
+	var user Entity.Users
+	err := db.QueryRow(sqlQuery, username).Scan(&user.Id, &user.Username, &user.Email, &user.Password)
+	if err != nil{
+		return users, err
+	}
+	users = append(users, user)
+	return users, nil
+}

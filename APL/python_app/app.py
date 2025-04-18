@@ -10,11 +10,13 @@ if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)"""
 
 from socketClient import doOperation
+from ReservationSimulator import connectWebsocket
 import time
 
 def main():
     print("Avvio client socket")
     #createSocket()
+    #connectWebsocket()
     doOperation()
     while True:
         time.sleep(10)

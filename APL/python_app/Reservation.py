@@ -1,10 +1,9 @@
 import json
 
 class Reservation:
-    def __init__(self, name, idUser, idStructure, revenue, startDate, endDate, idReservation=None):
+    def __init__(self, idUser, idStructure, revenue, startDate, endDate, idReservation=None):
         if idReservation is not None:
             self.idReservation = idReservation
-        self.name = name
         self.idUser = idUser 
         self.idStructure = idStructure 
         self.revenue = revenue
@@ -13,14 +12,13 @@ class Reservation:
 
 
     def __str__(self):
-        return f"Reservation(idReservation={self.idReservation}, idStructure={self.idStructure}, name={self.name}, idUser={self.idUser}, revenue={self.revenue}, startDate={self.startDate}, endDate={self.endDate})"
+        return f"Reservation(idReservation={self.idReservation}, idStructure={self.idStructure}, idUser={self.idUser}, revenue={self.revenue}, startDate={self.startDate}, endDate={self.endDate})"
 
 
     def aggiungiPrenotazione(self, clientSocket):
         request = {
             "action": "createReservation",
             "data": {
-                "nameReservation": self.name,
                 "idUser": self.idUser,
                 "idStructure": self.idStructure,
                 "revenue": self.revenue,
@@ -56,7 +54,6 @@ class Reservation:
             "action": "updateReservation",
             "data": {
                 "idReservation": self.idReservation,
-                "nameReservation": self.name,
                 "idUser": self.idUser,
                 "idStructure": self.idStructure,
                 "revenue": self.revenue,

@@ -9,6 +9,7 @@ COPY . .
 
 # Scarica il driver PostgreSQL
 RUN go get github.com/lib/pq
+RUN go get github.com/gorilla/websocket
 
 # Build the Go application
 RUN go build -o main .

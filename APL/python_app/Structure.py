@@ -1,16 +1,18 @@
 import json
 
 class Structure:
-    def __init__(self, name, idUser, type, rooms, idStructure=None):
+    def __init__(self, name, idUser, city, address, type, rooms, idStructure=None):
         if idStructure is not None:
             self.idStructure = idStructure
         self.name = name
-        self.idUser = idUser 
+        self.idUser = idUser
+        self.city = city
+        self.address = address
         self.type = type
         self.rooms = rooms
 
     def __str__(self):
-        return f"Structure(idStructure={self.idStructure}, name={self.name}, idUser={self.idUser}, type={self.type}, rooms={self.rooms})"
+        return f"Structure(idStructure={self.idStructure}, name={self.name}, idUser={self.idUser}, city={self.city}, address={self.address}, type={self.type}, rooms={self.rooms})"
 
 
     def aggiungiStruttura(self, clientSocket):
@@ -19,6 +21,8 @@ class Structure:
             "data": {
                 "nameStructure": self.name,
                 "idUser": self.idUser,
+                "city": self.city, 
+                "address": self.address,
                 "type": self.type,
                 "rooms": self.rooms
             }
@@ -53,6 +57,8 @@ class Structure:
                 "idStructure": self.idStructure,
                 "nameStructure": self.name,
                 "idUser": self.idUser,
+                "city": self.city, 
+                "address": self.address,
                 "type": self.type,
                 "rooms": self.rooms
             }

@@ -7,23 +7,22 @@ import(
 )
 
 func AddReservation(reservation Entity.Reservations, db *sql.DB)(int, error){
-	sqlStatement := `INSERT INTO reservations (name, idUser, idStructure, revenue, startDate, endDate)
-		VALUES ($1, $2, $3, $4, $5, $6)
+	sqlStatement := `INSERT INTO reservations (idUser, idStructure, revenue, startDate, endDate)
+		VALUES ($1, $2, $3, $4, $5)
 		RETURNING id`
 	id := 0
-	err := db.QueryRow(sqlStatement, reservation.Name, reservation.IdUser, reservation.IdStructure,
+	err := db.QueryRow(sqlStatement, reservation.IdUser, reservation.IdStructure,
 		reservation.Revenue, reservation.StartDate, reservation.EndDate).Scan(&id)
 	if err != nil {
         return 0, fmt.Errorf("errore durante l'inserimento della prenotazione: %w", err)
 	}
-	fmt.Printf("Prenotazione per la stanza: %s inserita correttament con id: %d", reservation.Name, id)
+	fmt.Printf("Prenotazione inserita correttament con id: %d", id)
 	return id, nil
 }
 
 func UpdateReservation(reservation Entity.Reservations, db *sql.DB)(error){
-	sqlStatement := `UPDATE reservations SET name=$1, idUser=$2, idStructure=$3,
-	 revenue=$4, startDate=$5, endDate=$6 WHERE id = $7`
-	result, err := db.Exec(sqlStatement, reservation.Name, reservation.IdUser, reservation.IdStructure,
+	sqlStatement := `UPDATE reservations SET idUser=$1, idStructure=$2, revenue=$3, startDate=$4, endDate=$5 WHERE id = $6`
+	result, err := db.Exec(sqlStatement, reservation.IdUser, reservation.IdStructure,
 		reservation.Revenue, reservation.StartDate, reservation.EndDate, reservation.Id)
 	if err != nil {
 		return fmt.Errorf("errore durante l'aggiornamento della prenotazione: %w", err)
@@ -55,7 +54,7 @@ func LoadReservations(db *sql.DB)([]Entity.Reservations, error){
 	var reservations []Entity.Reservations
 	for rows.Next(){
 		var reservation Entity.Reservations
-		err = rows.Scan(&reservation.Id, &reservation.Name, &reservation.IdUser, &reservation.IdStructure, &reservation.Revenue, 
+		err = rows.Scan(&reservation.Id, &reservation.IdUser, &reservation.IdStructure, &reservation.Revenue, 
 			&reservation.StartDate, &reservation.EndDate)
 		if err != nil {
 			return nil, err
@@ -70,7 +69,7 @@ func GetReservationById(reservationId int, db *sql.DB)([]Entity.Reservations, er
 	sqlQuery := `SELECT * FROM reservations WHERE id = $1`
 	var res Entity.Reservations
 	var reservations []Entity.Reservations
-	err := db.QueryRow(sqlQuery, reservationId).Scan(&res.Id, &res.Name, &res.IdUser, &res.IdStructure, &res.Revenue, &res.StartDate, &res.EndDate)
+	err := db.QueryRow(sqlQuery, reservationId).Scan(&res.Id, &res.IdUser, &res.IdStructure, &res.Revenue, &res.StartDate, &res.EndDate)
 	if err != nil{
 		return reservations, err
 	}

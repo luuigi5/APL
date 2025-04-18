@@ -9,7 +9,6 @@ import(
 
 func AddReservation(req Utility.Request, db *sql.DB)(Utility.Response){
 	reservation := Entity.Reservations {
-		Name : req.Data.NameReservation,
 		IdUser : req.Data.IdUser,
 		IdStructure : req.Data.IdStructure,
 		Revenue : req.Data.Revenue,
@@ -33,7 +32,6 @@ func AddReservation(req Utility.Request, db *sql.DB)(Utility.Response){
 func UpdateReservation(req Utility.Request, db *sql.DB)(Utility.Response){
 	reservation := Entity.Reservations {
 		Id: req.Data.IdReservation,
-		Name : req.Data.NameReservation,
 		IdUser : req.Data.IdUser,
 		IdStructure : req.Data.IdStructure,
 		Revenue : req.Data.Revenue,

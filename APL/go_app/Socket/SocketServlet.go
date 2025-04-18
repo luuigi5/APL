@@ -35,13 +35,13 @@ func ManageRequest(conn net.Conn){
 		fmt.Printf("Errore durante la lettura dei dati %v", err)
 	}
     jsonData := buffer[:n]
-	fmt.Printf("JSON ricevuto: %s\n", string(jsonData))
+	fmt.Printf("\nJSON RICEVUTO: %s\n", string(jsonData))
     
 	var request Utility.Request
     err = json.Unmarshal(jsonData, &request)
     var response Utility.Response
     if err != nil {
-		response = Utility.CreateResponse(500, "Error", "Non è stato possibile inserire l'utente", request, nil)
+		response = Utility.CreateResponse(500, "Error", "Non è stato possibile elaborare la richiesta", request, nil)
 	} else {
         response = ExecuteActionByRequest(request)
     }
@@ -62,10 +62,12 @@ func ManageRequest(conn net.Conn){
 func ExecuteActionByRequest(req Utility.Request)(Utility.Response){
 	db, dbErr := Utility.OpenDBConnection()
 	if dbErr != nil {
-		return Utility.CreateResponse(500, "Error", "Non è stato possibile inserire l'utente", req, nil)
+		return Utility.CreateResponse(500, "Error", "Non è stato possibile eseguire la richiesta", req, nil)
 	}
 	var response Utility.Response
     switch req.Action {
+		case "login":
+			response = Service.Login(req, db)
 		case "createUser":
 			response = Service.AddUser(req, db)
 		case "updateUser":

@@ -11,6 +11,8 @@ func AddStructure(req Utility.Request, db *sql.DB)(Utility.Response){
 	structure := Entity.Structures {
 		Name : req.Data.NameStructure,
 		IdUser: req.Data.IdUser,
+		City: req.Data.City,
+		Address: req.Data.Address,
 		Type : req.Data.Type,
 		Rooms : req.Data.Rooms,
 	}
@@ -33,6 +35,8 @@ func UpdateStructure(req Utility.Request, db *sql.DB)(Utility.Response){
 		Id : req.Data.IdStructure,
 		Name : req.Data.NameStructure,
 		IdUser : req.Data.IdUser,
+		City: req.Data.City,
+		Address: req.Data.Address,
 		Type : req.Data.Type,
 		Rooms : req.Data.Rooms,
 	}

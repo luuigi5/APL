@@ -7,6 +7,8 @@ import (
 	//_ "github.com/lib/pq"
 	//"go_app/Utility"
 	"go_app/Socket"
+	//"net/http"
+	//"log"
 )
 
 func mainDB() {
@@ -112,5 +114,13 @@ func mainDB() {
 
 //MAIN AVVIO SERVER
 func main(){
+	/*http.HandleFunc("/ws", Socket.Connect)
+
+    serverAddr := "0.0.0.0:8092"
+    fmt.Printf("Server WebSocket in ascolto su %s\n", serverAddr)
+    if err := http.ListenAndServe(serverAddr, nil); err != nil {
+        log.Fatal("Errore nell'avvio del server:", err)
+    }*/
 	Socket.StartSocketServer()
+    //rand.Seed(time.Now().UnixNano())
 }

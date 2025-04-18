@@ -74,3 +74,15 @@ func GetUserById(req Utility.Request, db *sql.DB)(Utility.Response){
 		return Utility.CreateResponse(200, "Success", "Utente recuperato", req, elements)
 	}
 }
+
+func Login(req Utility.Request, db *sql.DB)(Utility.Response){
+	user, err := Repository.GetUserByUsername(req.Data.Username, db)
+	if err != nil {
+		return Utility.CreateResponse(500, "Error", "Non è stato possibile recuperare l'utente", req, nil)
+	}else{
+		elements := &Utility.GetElement {
+			Users: user,
+		}
+		return Utility.CreateResponse(200, "Success", "Utente recuperato", req, elements)
+	}
+}
