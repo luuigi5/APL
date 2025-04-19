@@ -6,6 +6,7 @@ services:
       context: ./python_app
     ports:
       - "5000:5000"
+      - "8093:8093"
     depends_on:
       - db
       - go_app

@@ -24,14 +24,11 @@ class User:
         clientSocket.sendall(requestJson.encode())
         response = clientSocket.recv(1024)
         responseJson = json.loads(response.decode())
-        print(f"{responseJson}")
         if responseJson["code"] == 200:
             pwd = responseJson["elements"]["users"][0]["password"]
-            print(f"{pwd}")
             if bcrypt.checkpw(self.password.encode('utf-8'), pwd.encode('utf-8')):
                 self.idUser =  responseJson["elements"]["users"][0]["id"]
                 token = createJwtToken(self.idUser, self.username)
-                print(f"Ricevuto token nel metodo login : {token}")
                 return {"token": token}
             else:
                 print("Le due password non coincidono")
