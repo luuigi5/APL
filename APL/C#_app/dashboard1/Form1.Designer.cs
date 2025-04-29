@@ -42,7 +42,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.LightSlateGray;
+            this.panel1.BackColor = System.Drawing.Color.LightSeaGreen;
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.button1);
@@ -58,7 +58,7 @@
             // 
             // button5
             // 
-            this.button5.BackColor = System.Drawing.Color.LightSlateGray;
+            this.button5.BackColor = System.Drawing.Color.LightSeaGreen;
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Nirmala UI", 14F);
@@ -75,7 +75,7 @@
             // 
             // button6
             // 
-            this.button6.BackColor = System.Drawing.Color.LightSlateGray;
+            this.button6.BackColor = System.Drawing.Color.LightSeaGreen;
             this.button6.FlatAppearance.BorderSize = 0;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Nirmala UI", 14F);
@@ -93,7 +93,7 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.LightSlateGray;
+            this.button1.BackColor = System.Drawing.Color.LightSeaGreen;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Nirmala UI", 14F);
@@ -111,7 +111,7 @@
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.LightSlateGray;
+            this.button3.BackColor = System.Drawing.Color.LightSeaGreen;
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Nirmala UI", 14F);
@@ -128,7 +128,7 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.LightSlateGray;
+            this.button2.BackColor = System.Drawing.Color.LightSeaGreen;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Nirmala UI", 14F);
@@ -145,7 +145,7 @@
             // 
             // button4
             // 
-            this.button4.BackColor = System.Drawing.Color.LightSlateGray;
+            this.button4.BackColor = System.Drawing.Color.LightSeaGreen;
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Nirmala UI", 14F);
@@ -175,7 +175,7 @@
             // 
             this.AccessibleName = "ptrov";
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1044, 762);

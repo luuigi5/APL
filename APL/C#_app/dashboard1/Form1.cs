@@ -5,9 +5,14 @@ namespace dashboard1
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        public string token { get; set; }
+        public User user { get; set; }
+
+        public Form1(string token, User user)
         {
             InitializeComponent();
+            this.token = token;
+            this.user = user;
         }
 
         private void button1_Click(object sender, EventArgs e)

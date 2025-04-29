@@ -10,6 +10,10 @@ class User:
         self.email = email 
         self.password = password
 
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+
     def __str__(self):
         return f"User(username={self.username}, email={self.email}, idUser={self.idUser})"
 
@@ -28,8 +32,17 @@ class User:
             pwd = responseJson["elements"]["users"][0]["password"]
             if bcrypt.checkpw(self.password.encode('utf-8'), pwd.encode('utf-8')):
                 self.idUser =  responseJson["elements"]["users"][0]["id"]
+                self.email = responseJson["elements"]["users"][0]["email"]
                 token = createJwtToken(self.idUser, self.username)
-                return {"token": token}
+                return {
+                    "token": token,
+                    "user": {
+                        "id": self.idUser,
+                        "username": self.username,
+                        "email": self.email,
+                        "password": self.password
+                    }
+                }
             else:
                 print("Le due password non coincidono")
                 return {"success": False, "error": "Password non valida"}

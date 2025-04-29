@@ -15,13 +15,16 @@ def createSocket():
     return clientSocket
 
 
-def doOperation():
+def doOperation(action, payload):
     try:
-        utente = User("Al", "al@renthouse.it", "apartamentPwdSyd", None)
-        clientSocket = createSocket()
-        responseLogin = json.dumps(utente.login(clientSocket))
-        clientSocket.close()
-        print("Risposta: ", json.dumps(responseLogin))
+        if(action == 'login'):
+            #utente = User("Al", "al@renthouse.it", "apartamentPwdSyd", None)
+            utente = User(payload['username'], payload['password'])
+            clientSocket = createSocket()
+            responseLogin = json.dumps(utente.login(clientSocket))
+            clientSocket.close()
+            print("Risposta: ", json.dumps(responseLogin))
+            return json.dumps(responseLogin)
 
 
         #N.B. per ogni operazione va ricreato il Socket
