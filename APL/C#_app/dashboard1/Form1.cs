@@ -39,5 +39,35 @@ namespace dashboard1
         {
 
         }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void resize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void close_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void header_Paint(object sender, PaintEventArgs e)
+        {
+            nome.Text = "Bentornato " + user.username;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

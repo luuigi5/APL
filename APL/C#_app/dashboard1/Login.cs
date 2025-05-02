@@ -48,23 +48,18 @@ namespace dashboard1
             string apiUrl = "http://localhost:8093/login";
             string payload = JsonSerializer.Serialize(new { username = usernameField.Text, password = passwordField.Text });
             string response = await Client.CallApiPost(apiUrl, payload);
-            Console.WriteLine(response);
             string decodedJson = JsonSerializer.Deserialize<string>(response);
-            Console.WriteLine(decodedJson);
             ResponseData resp = JsonSerializer.Deserialize<ResponseData>(decodedJson);
-            if (resp.token != null && resp.user != null) {
-
-
+            if (resp.token != null && resp.user != null)
+            {
                 Console.WriteLine("Utente loggato " + resp.token);
-                //this.Close();
-                Thread newThread = new Thread(() =>
-                {
-                    Form1 dashboard = new Form1(resp.token, resp.user);
-                    dashboard.Show();
-                });
-                newThread.SetApartmentState(ApartmentState.STA);
-                newThread.Start();       
+                Form1 dashboard = new Form1(resp.token, resp.user);
+                dashboard.Show();
                 this.Hide();
+
+            }
+            else {
+                MessageBox.Show("Credenziali non valide");
             }
 
         }

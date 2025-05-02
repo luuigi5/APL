@@ -14,11 +14,11 @@ namespace dashboard1
         public string password { get; set; }
         public string username { get; set; }
 
-        public User(int id, string username, string email, string password) {
+        public User(int id, string username, string email) {
             this.id = id;
             this.username = username;
             this.email = email;
-            this.password = password;
+            //this.password = password;
         }
 
         public User() { }

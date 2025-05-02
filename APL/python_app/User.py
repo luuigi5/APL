@@ -39,8 +39,8 @@ class User:
                     "user": {
                         "id": self.idUser,
                         "username": self.username,
-                        "email": self.email,
-                        "password": self.password
+                        "email": self.email
+                        #"password": self.password
                     }
                 }
             else:
