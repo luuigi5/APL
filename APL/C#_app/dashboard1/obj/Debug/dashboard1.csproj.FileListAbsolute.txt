@@ -41,3 +41,6 @@ C:\Users\FNCLGU00B\source\repos\APL\APL\C#_app\dashboard1\bin\Debug\System.Text.
 C:\Users\FNCLGU00B\source\repos\APL\APL\C#_app\dashboard1\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\FNCLGU00B\source\repos\APL\APL\C#_app\dashboard1\bin\Debug\System.ValueTuple.xml
 C:\Users\FNCLGU00B\source\repos\APL\APL\C#_app\dashboard1\obj\Debug\dashboard1.csproj.Up2Date
+C:\Users\FNCLGU00B\source\repos\APL\APL\C#_app\dashboard1\obj\Debug\dashboard1.BaseForm.resources
+C:\Users\FNCLGU00B\source\repos\APL\APL\C#_app\dashboard1\obj\Debug\dashboard1.AddStructure.resources
+C:\Users\FNCLGU00B\source\repos\APL\APL\C#_app\dashboard1\obj\Debug\dashboard1.StructuresList.resources

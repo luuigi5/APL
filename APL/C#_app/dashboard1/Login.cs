@@ -44,23 +44,31 @@ namespace dashboard1
         }
 
         private async Task LoginButton_Click_Async() {
-
-            string apiUrl = "http://localhost:8093/login";
-            string payload = JsonSerializer.Serialize(new { username = usernameField.Text, password = passwordField.Text });
-            string response = await Client.CallApiPost(apiUrl, payload);
-            string decodedJson = JsonSerializer.Deserialize<string>(response);
-            ResponseData resp = JsonSerializer.Deserialize<ResponseData>(decodedJson);
-            if (resp.token != null && resp.user != null)
+            if (usernameField.Text != "" && passwordField.Text != "")
             {
-                Console.WriteLine("Utente loggato " + resp.token);
-                Form1 dashboard = new Form1(resp.token, resp.user);
-                dashboard.Show();
-                this.Hide();
+                string apiUrl = "http://localhost:8093/login";
+                string payload = JsonSerializer.Serialize(new { username = usernameField.Text, password = passwordField.Text });
+                string response = await Client.CallApiPost(apiUrl, payload, null);
 
+                ResponseData resp = JsonSerializer.Deserialize<ResponseData>(response);
+                if (resp.status == 200 && resp.token != null && resp.user != null)
+                {
+                    Console.WriteLine("Utente loggato " + resp.token);
+                    AddStructure addStructure = new AddStructure(resp.token, resp.user);
+                    ModalManager.ShowModal(addStructure);
+                    /*addStructure.Show();*/
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Credenziali non valide");
+                }
             }
             else {
-                MessageBox.Show("Credenziali non valide");
+                MessageBox.Show("Inserire username e password");
+
             }
+
 
         }
 
@@ -71,6 +79,11 @@ namespace dashboard1
         private async void LoginButton_Click(object sender, EventArgs e)
         {
             await LoginButton_Click_Async();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

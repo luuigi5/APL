@@ -35,17 +35,16 @@ class User:
                 self.email = responseJson["elements"]["users"][0]["email"]
                 token = createJwtToken(self.idUser, self.username)
                 return {
+                    "status": 200,
                     "token": token,
                     "user": {
                         "id": self.idUser,
                         "username": self.username,
                         "email": self.email
-                        #"password": self.password
                     }
                 }
             else:
-                print("Le due password non coincidono")
-                return {"success": False, "error": "Password non valida"}
+                return {"status": 401, "error": "Password non valida"}
 
     
     def aggiungiUtente(self, clientSocket):
@@ -135,7 +134,7 @@ def createJwtToken(idUser, username):
     payload = {
         "idUser": idUser,
         "username": username, 
-        "iat": datetime.datetime.utcnow(),  # Issued At
+        "iat": datetime.datetime.utcnow(),
         "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=24)  #Scadenza simbolica token di 24 ore dal rilascio
     }
 

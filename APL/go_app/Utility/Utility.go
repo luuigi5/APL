@@ -48,6 +48,7 @@ type Data struct {
 	Address string `json:"address,omitempty"`
 	Type string `json:"type,omitempty"`
 	Rooms int `json:"rooms,omitempty"`
+	ImgLink string `json:"imglink,omitempty"`
 }
 
 type GetElement struct {
@@ -55,8 +56,6 @@ type GetElement struct {
 	Structures []Entity.Structures `json:"structures,omitempty"`
 	Reservations []Entity.Reservations `json:"reservations,omitempty"`
 }
-
-
 
 // funzione che prende i parametri di connessione del db dal file di configurazione
 func getDbConfig(filename string)(dbParameters, error){

@@ -10,5 +10,10 @@ namespace dashboard1
     {
         public string token { get; set; }
         public User user { get; set; }
+        public Structure structure { get; set; }
+
+        public int status { get; set; }
+
+        public string error { get; set; }
     }
 }

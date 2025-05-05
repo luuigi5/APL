@@ -87,6 +87,8 @@ func ExecuteActionByRequest(req Utility.Request)(Utility.Response){
 			response = Service.DeleteStructure(req, db)
 		case "getStructureById":
 			response = Service.GetStructureById(req, db)
+		case "getStructureByIdUser":
+			response = Service.GetStructureByIdUser(req, db)
 		case "getAllStructure":
 			response = Service.LoadStructures(req, db)
 

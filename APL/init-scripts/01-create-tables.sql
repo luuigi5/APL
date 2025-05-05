@@ -24,5 +24,6 @@ CREATE TABLE Structures(
     address VARCHAR(50),
     type VARCHAR(50), 
     rooms INT,
+    imglink VARCHAR(500),
     FOREIGN KEY (idUser) REFERENCES Users(id) ON DELETE CASCADE
 );

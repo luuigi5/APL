@@ -5,29 +5,35 @@ using System.Threading.Tasks;
 
 namespace dashboard1.ClientRest{
     class Client {
-        public static async Task CallApiGet(string apiUrl){
-            // Indirizzo del server Python esposto sulla porta 8093
-            //string apiUrl = "http://localhost:8093/api/status";
-
+        public static async Task<string> CallApiGet(string apiUrl, string token){
             using (HttpClient client = new HttpClient()) {
                 try {
-                    Console.WriteLine("Invio richiesta GET a " + apiUrl);
+                    if (token != null && token != "")
+                    {
+                        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                    }
                     HttpResponseMessage response = await client.GetAsync(apiUrl);
                     response.EnsureSuccessStatusCode();
                     string responseBody = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine("Risposta ricevuta:" + responseBody);
+                    return responseBody;
                 } catch (HttpRequestException e){
                     Console.WriteLine("Errore durante la richiesta HTTP:" + e.Message);
+                    return null;
                 } catch (Exception e) {
                     Console.WriteLine("Errore generico:" + e.Message);
+                    return null;
                 }
             }
         }
 
-        public static async Task<string> CallApiPost(string apiUrl, string payload) {
+        public static async Task<string> CallApiPost(string apiUrl, string payload, string token) {
             using (HttpClient client = new HttpClient())
             {
-                try {                
+                try
+                {
+                    if (token != null && token != "") {
+                        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                    }
                     var content = new StringContent(payload, Encoding.UTF8, "application/json");
                     HttpResponseMessage response = await client.PostAsync(apiUrl, content);
                     response.EnsureSuccessStatusCode();

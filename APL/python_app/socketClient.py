@@ -14,6 +14,7 @@ def createSocket():
     clientSocket.connect(serverAdd)
     return clientSocket
 
+#utente = User("Al", "al@renthouse.it", "apartamentPwdSyd", None)
 
 def doOperation(action, payload):
     try:
@@ -23,10 +24,7 @@ def doOperation(action, payload):
             clientSocket = createSocket()
             responseLogin = json.dumps(utente.login(clientSocket))
             clientSocket.close()
-            print("Risposta: ", json.dumps(responseLogin))
-            return json.dumps(responseLogin)
-
-
+            return responseLogin
         #N.B. per ogni operazione va ricreato il Socket
         #CREA UTENTE
         """clientSocket = createSocket()
@@ -34,13 +32,11 @@ def doOperation(action, payload):
         response = utente.aggiungiUtente(clientSocket)
         print("SERVER Risposta (JSON): ", json.dumps(response))
         clientSocket.close()"""
-
         """ELIMINA UTENTE
         clientSocket = createSocket()
         response = utente.eliminaUtente(clientSocket)
         print("SERVER Risposta (JSON): ", json.dumps(response))
         clientSocket.close()"""
-
         """AGGIORNA UTENTE
         utente.email = "PSherman@42Wallaby.Way"
         utente.password = "Sidney"
@@ -48,26 +44,31 @@ def doOperation(action, payload):
         response = utente.aggiornaUtente(clientSocket)
         print("Risposta UpdateUser: ", json.dumps(response))
         clientSocket.close()"""
-
         """GET UTENTE BY ID
         clientSocket = createSocket()
         response = User.caricaUtenteTramiteId(138, clientSocket)
         print("Utente caricato: ", response)
         clientSocket.close()"""
-
         """CARICA UTENTI 
         clientSocket = createSocket()
         response = User.caricaUtenti(clientSocket)
         print("Utenti: ", response)
         clientSocket.close()"""
 
-        """clientSocket=createSocket()
-        structure = Structure("Wallaby", utente.idUser, "Sidney", "PSherman42", "Hostel", 50, None)
-        response = structure.aggiungiStruttura(clientSocket)
-        print("Creazione struttura: ", response)
-        clientSocket.close()
+        if(action == 'addStructure'):
+            structure = Structure(payload['name'], payload['idUser'], payload['city'], payload['address'],payload['type'], payload['rooms'],payload['imglink'], None)
+            clientSocket = createSocket()
+            response = json.dumps(structure.aggiungiStruttura(clientSocket))
+            clientSocket.close()
+            return response
 
-        clientSocket=createSocket()
+        if(action == 'getStructureByUser'):
+            clientSocket = createSocket()
+            response =  json.dumps(Structure.caricaStrutturaTramiteIdUser(payload, clientSocket))
+            clientSocket.close()
+            return response
+
+        """clientSocket=createSocket()
         reservation=Reservation(utente.idUser, structure.idStructure, 150, "08-04-2025", "10-04-2025", None)
         response = reservation.aggiungiPrenotazione(clientSocket)
         print("Creazione prenotazione: ", response)

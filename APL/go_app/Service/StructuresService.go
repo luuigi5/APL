@@ -15,6 +15,7 @@ func AddStructure(req Utility.Request, db *sql.DB)(Utility.Response){
 		Address: req.Data.Address,
 		Type : req.Data.Type,
 		Rooms : req.Data.Rooms,
+		ImgLink : req.Data.ImgLink,
 	}
 	id, err := Repository.AddStructure(structure, db)
 	if err != nil{
@@ -39,6 +40,7 @@ func UpdateStructure(req Utility.Request, db *sql.DB)(Utility.Response){
 		Address: req.Data.Address,
 		Type : req.Data.Type,
 		Rooms : req.Data.Rooms,
+		ImgLink : req.Data.ImgLink,
 	}
 	err := Repository.UpdateStructure(structure, db)
 	if err != nil{
@@ -71,6 +73,18 @@ func LoadStructures(req Utility.Request, db *sql.DB)(Utility.Response){
 
 func GetStructureById(req Utility.Request, db *sql.DB)(Utility.Response){
 	structure, err := Repository.GetStructureById(req.Data.IdStructure, db)
+	if err != nil {
+		return Utility.CreateResponse(500, "Error", "Non è stato possibile recuperare la struttura", req, nil)
+	}else{
+		elements := &Utility.GetElement {
+			Structures: structure,
+		}
+		return Utility.CreateResponse(200, "Success", "Struttura recuperata", req, elements)
+	}
+}
+
+func GetStructureByIdUser(req Utility.Request, db *sql.DB)(Utility.Response){
+	structure, err := Repository.GetStructureByIdUser(req.Data.IdUser, db)
 	if err != nil {
 		return Utility.CreateResponse(500, "Error", "Non è stato possibile recuperare la struttura", req, nil)
 	}else{

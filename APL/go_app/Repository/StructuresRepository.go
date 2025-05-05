@@ -7,11 +7,11 @@ import(
 )
 
 func AddStructure(structure Entity.Structures, db *sql.DB)(int, error){
-	sqlStatement := `INSERT INTO structures (name, idUser, city, address, type, rooms)
-		VALUES ($1, $2, $3, $4, $5, $6 )
+	sqlStatement := `INSERT INTO structures (name, idUser, city, address, type, rooms, imglink)
+		VALUES ($1, $2, $3, $4, $5, $6, $7)
 		RETURNING id`
 	id := 0
-	err := db.QueryRow(sqlStatement, structure.Name, structure.IdUser, structure.City, structure.Address, structure.Type, structure.Rooms).Scan(&id)
+	err := db.QueryRow(sqlStatement, structure.Name, structure.IdUser, structure.City, structure.Address, structure.Type, structure.Rooms, structure.ImgLink).Scan(&id)
 	if err != nil {
         return 0, fmt.Errorf("errore durante l'inserimento della struttura: %w", err)
 	}
@@ -20,8 +20,8 @@ func AddStructure(structure Entity.Structures, db *sql.DB)(int, error){
 }
 
 func UpdateStructure(structure Entity.Structures, db *sql.DB)(error){
-	sqlStatement := `UPDATE structures SET name=$1, idUser=$2, city=$3, address=$4, type=$5, rooms=$6 WHERE id = $7`
-	result, err := db.Exec(sqlStatement, structure.Name, structure.IdUser, structure.City, structure.Address, structure.Type, structure.Rooms, structure.Id)
+	sqlStatement := `UPDATE structures SET name=$1, idUser=$2, city=$3, address=$4, type=$5, rooms=$6, imglink=$7 WHERE id = $8`
+	result, err := db.Exec(sqlStatement, structure.Name, structure.IdUser, structure.City, structure.Address, structure.Type, structure.Rooms, structure.ImgLink, structure.Id)
 	if err != nil {
 		return fmt.Errorf("errore durante l'aggiornamento della struttura: %w", err)
 	}
@@ -54,7 +54,7 @@ func LoadStructures(db *sql.DB)([]Entity.Structures, error){
 	var structures []Entity.Structures
 	for rows.Next(){
 		var structure Entity.Structures
-		err = rows.Scan(&structure.Id, &structure.Name, &structure.IdUser, &structure.City, &structure.Address, &structure.Type, &structure.Rooms)
+		err = rows.Scan(&structure.Id, &structure.Name, &structure.IdUser, &structure.City, &structure.Address, &structure.Type, &structure.Rooms, &structure.ImgLink)
 		if err != nil {
 			return nil, err
 		}
@@ -68,7 +68,7 @@ func GetStructureById(structureId int, db *sql.DB)([]Entity.Structures, error){
 	sqlQuery := `SELECT * FROM structures WHERE id = $1`
 	var structure Entity.Structures
 	var structures []Entity.Structures
-	err := db.QueryRow(sqlQuery, structureId).Scan(&structure.Id, &structure.Name, &structure.IdUser, &structure.City, &structure.Address, &structure.Type, &structure.Rooms)
+	err := db.QueryRow(sqlQuery, structureId).Scan(&structure.Id, &structure.Name, &structure.IdUser, &structure.City, &structure.Address, &structure.Type, &structure.Rooms, &structure.ImgLink)
 	if err != nil{
 		return structures, err
 	}
@@ -76,3 +76,14 @@ func GetStructureById(structureId int, db *sql.DB)([]Entity.Structures, error){
 	return structures, nil
 }
 
+func GetStructureByIdUser(userId int, db *sql.DB)([]Entity.Structures, error){
+	sqlQuery := `SELECT * FROM structures WHERE iduser = $1`
+	var structure Entity.Structures
+	var structures []Entity.Structures
+	err := db.QueryRow(sqlQuery, userId).Scan(&structure.Id, &structure.Name, &structure.IdUser, &structure.City, &structure.Address, &structure.Type, &structure.Rooms, &structure.ImgLink)
+	if err != nil{
+		return structures, err
+	}
+	structures = append(structures, structure)
+	return structures, nil
+}

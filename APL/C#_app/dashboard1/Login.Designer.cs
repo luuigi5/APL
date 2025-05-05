@@ -60,7 +60,7 @@ namespace dashboard1
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(430, 534);
+            this.panel1.Size = new System.Drawing.Size(430, 550);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -95,8 +95,9 @@ namespace dashboard1
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(430, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(561, 534);
+            this.panel2.Size = new System.Drawing.Size(570, 550);
             this.panel2.TabIndex = 1;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // LoginButton
             // 
@@ -189,7 +190,7 @@ namespace dashboard1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(991, 534);
+            this.ClientSize = new System.Drawing.Size(1000, 550);
             this.ControlBox = false;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

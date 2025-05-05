@@ -1,6 +1,6 @@
 ﻿namespace dashboard1
 {
-    partial class Form1
+   /* partial class Form1
     {
         /// <summary>
         /// Variabile di progettazione necessaria.
@@ -313,6 +313,6 @@
         private System.Windows.Forms.Label resize;
         private System.Windows.Forms.Label close;
         private System.Windows.Forms.Label nome;
-    }
+    }*/
 }
 

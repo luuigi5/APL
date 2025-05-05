@@ -12,4 +12,5 @@ type Structures struct {
 	Address string `json:"address" db:"address"`
 	Type string `json:"type" db:"type"`
 	Rooms int `json:"rooms" db:"rooms"`
+	ImgLink string `json:"imglink" db:"imglink"`
 }
