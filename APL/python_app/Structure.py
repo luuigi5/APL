@@ -92,31 +92,20 @@ class Structure:
         request = {
             "action": "getStructureByIdUser",
             "data": {
-                "idUser": idUser
+                "idUser": int(idUser)
             }
         }
         requestJson = json.dumps(request)
         clientSocket.sendall(requestJson.encode())
         response = clientSocket.recv(1024)
         responseJson = json.loads(response.decode())
-        print (responseJson)
-        return response
-        """if responseJson["code"] == 200:
+        if responseJson["code"] == 200:
             return  {
                         "status": 200,
-                        "structure": {
-                            "id": responseJson["elements"]["structures"][0]["id"],
-                            "name": responseJson["elements"]["structures"][0]["name"],
-                            "idUser": responseJson["elements"]["structures"][0]["idUser"],
-                            "city": responseJson["elements"]["structures"][0]["city"],
-                            "address": responseJson["elements"]["structures"][0]["city"],
-                            "type": responseJson["elements"]["structures"][0]["city"],
-                            "rooms": responseJson["elements"]["structures"][0]["city"],
-                            "imglink": responseJson["elements"]["structures"][0]["city"],
-                        }
+                        "structures": responseJson["elements"]["structures"]
                     }
         else:
-            return {"status": 500, "error": "Errore durante l'inserimento della struttura"}"""
+            return {"status": 500, "error": "Errore durante l'inserimento della struttura"}
 
 
 

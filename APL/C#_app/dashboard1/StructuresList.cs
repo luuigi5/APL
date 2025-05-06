@@ -35,7 +35,21 @@ namespace dashboard1
             ResponseData resp = JsonSerializer.Deserialize<ResponseData>(response);
             if (resp.status == 200)
             {
-                Console.WriteLine("Utente loggato " + resp.structure);
+                Console.WriteLine("Utente loggato " + resp.structures);
+
+                foreach (var structure in resp.structures)
+                {
+                    Console.WriteLine($"Name: {structure.name}");
+                    Console.WriteLine($"Address: {structure.address}");
+                    Console.WriteLine($"City: {structure.city}");
+                    Console.WriteLine($"ID: {structure.id}");
+                    Console.WriteLine($"User ID: {structure.idUser}");
+                    Console.WriteLine($"Image Link: {structure.imglink}");
+                    Console.WriteLine($"Rooms: {structure.rooms}");
+                    Console.WriteLine($"Type: {structure.type}");
+                    Console.WriteLine();
+                }
+
             }
 
 

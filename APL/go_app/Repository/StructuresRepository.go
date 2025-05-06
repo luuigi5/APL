@@ -77,13 +77,21 @@ func GetStructureById(structureId int, db *sql.DB)([]Entity.Structures, error){
 }
 
 func GetStructureByIdUser(userId int, db *sql.DB)([]Entity.Structures, error){
-	sqlQuery := `SELECT * FROM structures WHERE iduser = $1`
-	var structure Entity.Structures
-	var structures []Entity.Structures
-	err := db.QueryRow(sqlQuery, userId).Scan(&structure.Id, &structure.Name, &structure.IdUser, &structure.City, &structure.Address, &structure.Type, &structure.Rooms, &structure.ImgLink)
+	sqlQuery := `SELECT * FROM structures WHERE idUser = $1`
+	rows,err := db.Query(sqlQuery, userId)
 	if err != nil{
-		return structures, err
+		return nil, err
 	}
-	structures = append(structures, structure)
+	defer rows.Close()
+	var structures []Entity.Structures
+
+	for rows.Next(){
+		var structure Entity.Structures
+		err = rows.Scan(&structure.Id, &structure.Name, &structure.IdUser, &structure.City, &structure.Address, &structure.Type, &structure.Rooms, &structure.ImgLink)
+		if err != nil {
+			return nil, err
+		}
+		structures = append(structures, structure)
+	}
 	return structures, nil
 }

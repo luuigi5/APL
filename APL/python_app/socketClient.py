@@ -64,7 +64,7 @@ def doOperation(action, payload):
 
         if(action == 'getStructureByUser'):
             clientSocket = createSocket()
-            response =  json.dumps(Structure.caricaStrutturaTramiteIdUser(payload, clientSocket))
+            response =  Structure.caricaStrutturaTramiteIdUser(payload, clientSocket)
             clientSocket.close()
             return response
 
