@@ -24,6 +24,8 @@ namespace dashboard1
             InitializeComponent();
             this.token = token;
             this.user = user;
+            //estendo il titolo del baseform e lo modifico nelle varie pagine
+            this.title.Text = "Aggiungi struttura";
         }
 
         private void label1_Click(object sender, EventArgs e)

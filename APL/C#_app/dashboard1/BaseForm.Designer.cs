@@ -30,143 +30,86 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseForm));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.dashboardButton = new System.Windows.Forms.Button();
+            this.addStructureButton = new System.Windows.Forms.Button();
             this.logoutButton = new System.Windows.Forms.Button();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.reservationsButton = new System.Windows.Forms.Button();
+            this.structuresButton = new System.Windows.Forms.Button();
+            this.trendsButton = new System.Windows.Forms.Button();
             this.header = new System.Windows.Forms.Panel();
+            this.title = new System.Windows.Forms.Label();
             this.nome = new System.Windows.Forms.Label();
             this.resize = new System.Windows.Forms.Label();
             this.close = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.header.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.pictureBox6);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.pictureBox3);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.pictureBox8);
+            this.panel1.Controls.Add(this.dashboardButton);
+            this.panel1.Controls.Add(this.addStructureButton);
             this.panel1.Controls.Add(this.logoutButton);
-            this.panel1.Controls.Add(this.pictureBox4);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.reservationsButton);
+            this.panel1.Controls.Add(this.structuresButton);
+            this.panel1.Controls.Add(this.trendsButton);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(246, 610);
+            this.panel1.Size = new System.Drawing.Size(240, 610);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(16, 159);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(41, 40);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 22;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(16, 407);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(41, 39);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 21;
-            this.pictureBox5.TabStop = false;
             // 
             // pictureBox6
             // 
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(70, 12);
+            this.pictureBox6.Location = new System.Drawing.Point(82, 21);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(93, 76);
+            this.pictureBox6.Size = new System.Drawing.Size(105, 88);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox6.TabIndex = 14;
             this.pictureBox6.TabStop = false;
             // 
-            // button1
+            // dashboardButton
             // 
-            this.button1.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Nirmala UI", 14F);
-            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(4, 159);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(242, 40);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "    Dashboard";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.dashboardButton.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.dashboardButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dashboardButton.FlatAppearance.BorderSize = 0;
+            this.dashboardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dashboardButton.Font = new System.Drawing.Font("Nirmala UI", 14F);
+            this.dashboardButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dashboardButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.dashboardButton.Location = new System.Drawing.Point(4, 159);
+            this.dashboardButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dashboardButton.Name = "dashboardButton";
+            this.dashboardButton.Size = new System.Drawing.Size(242, 40);
+            this.dashboardButton.TabIndex = 1;
+            this.dashboardButton.Text = "    Dashboard";
+            this.dashboardButton.UseVisualStyleBackColor = false;
+            this.dashboardButton.Click += new System.EventHandler(this.dashboardButton_Click);
             // 
-            // pictureBox3
+            // addStructureButton
             // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(16, 311);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(41, 40);
-            this.pictureBox3.TabIndex = 19;
-            this.pictureBox3.TabStop = false;
-            // 
-            // button4
-            // 
-            this.button4.AllowDrop = true;
-            this.button4.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Nirmala UI", 14F);
-            this.button4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(0, 307);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(242, 40);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "   Aggiungi";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(16, 259);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(41, 40);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox8.TabIndex = 17;
-            this.pictureBox8.TabStop = false;
-            this.pictureBox8.Click += new System.EventHandler(this.pictureBox8_Click);
+            this.addStructureButton.AllowDrop = true;
+            this.addStructureButton.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.addStructureButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addStructureButton.FlatAppearance.BorderSize = 0;
+            this.addStructureButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addStructureButton.Font = new System.Drawing.Font("Nirmala UI", 14F);
+            this.addStructureButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.addStructureButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.addStructureButton.Location = new System.Drawing.Point(0, 307);
+            this.addStructureButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.addStructureButton.Name = "addStructureButton";
+            this.addStructureButton.Size = new System.Drawing.Size(246, 40);
+            this.addStructureButton.TabIndex = 3;
+            this.addStructureButton.Text = "   Aggiungi";
+            this.addStructureButton.UseVisualStyleBackColor = false;
+            this.addStructureButton.Click += new System.EventHandler(this.addStructureButton_Click);
             // 
             // logoutButton
             // 
@@ -181,97 +124,91 @@
             this.logoutButton.Location = new System.Drawing.Point(0, 407);
             this.logoutButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.logoutButton.Name = "logoutButton";
-            this.logoutButton.Size = new System.Drawing.Size(242, 40);
+            this.logoutButton.Size = new System.Drawing.Size(246, 40);
             this.logoutButton.TabIndex = 6;
             this.logoutButton.Text = "Logout";
             this.logoutButton.UseVisualStyleBackColor = false;
-            this.logoutButton.Click += new System.EventHandler(this.button5_Click);
+            this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
             // 
-            // pictureBox4
+            // reservationsButton
             // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(16, 357);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(41, 40);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 20;
-            this.pictureBox4.TabStop = false;
+            this.reservationsButton.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.reservationsButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.reservationsButton.FlatAppearance.BorderSize = 0;
+            this.reservationsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.reservationsButton.Font = new System.Drawing.Font("Nirmala UI", 14F);
+            this.reservationsButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.reservationsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.reservationsButton.Location = new System.Drawing.Point(0, 259);
+            this.reservationsButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.reservationsButton.Name = "reservationsButton";
+            this.reservationsButton.Size = new System.Drawing.Size(246, 40);
+            this.reservationsButton.TabIndex = 15;
+            this.reservationsButton.Text = "        Prenotazioni";
+            this.reservationsButton.UseVisualStyleBackColor = false;
+            this.reservationsButton.Click += new System.EventHandler(this.reservationsButton_Click);
             // 
-            // button5
+            // structuresButton
             // 
-            this.button5.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Nirmala UI", 14F);
-            this.button5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(0, 259);
-            this.button5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(242, 40);
-            this.button5.TabIndex = 15;
-            this.button5.Text = "        Prenotazioni";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click_1);
+            this.structuresButton.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.structuresButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.structuresButton.FlatAppearance.BorderSize = 0;
+            this.structuresButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.structuresButton.Font = new System.Drawing.Font("Nirmala UI", 14F);
+            this.structuresButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.structuresButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.structuresButton.Location = new System.Drawing.Point(0, 209);
+            this.structuresButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.structuresButton.Name = "structuresButton";
+            this.structuresButton.Size = new System.Drawing.Size(246, 40);
+            this.structuresButton.TabIndex = 2;
+            this.structuresButton.Text = "  Proprietà";
+            this.structuresButton.UseVisualStyleBackColor = false;
+            this.structuresButton.Click += new System.EventHandler(this.structuresButton_Click);
             // 
-            // pictureBox2
+            // trendsButton
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(16, 210);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(41, 39);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 18;
-            this.pictureBox2.TabStop = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Nirmala UI", 14F);
-            this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(0, 209);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(242, 40);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "  Proprietà";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Nirmala UI", 14F);
-            this.button3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(0, 357);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(242, 40);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Trends";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.trendsButton.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.trendsButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.trendsButton.FlatAppearance.BorderSize = 0;
+            this.trendsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.trendsButton.Font = new System.Drawing.Font("Nirmala UI", 14F);
+            this.trendsButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.trendsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.trendsButton.Location = new System.Drawing.Point(0, 357);
+            this.trendsButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.trendsButton.Name = "trendsButton";
+            this.trendsButton.Size = new System.Drawing.Size(240, 40);
+            this.trendsButton.TabIndex = 4;
+            this.trendsButton.Text = "Trends";
+            this.trendsButton.UseVisualStyleBackColor = false;
+            this.trendsButton.Click += new System.EventHandler(this.trendsButton_Click);
             // 
             // header
             // 
             this.header.AccessibleName = "";
+            this.header.BackColor = System.Drawing.Color.LightGray;
+            this.header.Controls.Add(this.title);
             this.header.Controls.Add(this.nome);
             this.header.Controls.Add(this.resize);
             this.header.Controls.Add(this.close);
-            this.header.Location = new System.Drawing.Point(247, 0);
+            this.header.Cursor = System.Windows.Forms.Cursors.SizeAll;
+            this.header.Location = new System.Drawing.Point(238, 0);
             this.header.Name = "header";
-            this.header.Size = new System.Drawing.Size(650, 40);
+            this.header.Size = new System.Drawing.Size(823, 40);
             this.header.TabIndex = 13;
             this.header.Paint += new System.Windows.Forms.PaintEventHandler(this.header_Paint);
+            this.header.MouseDown += new System.Windows.Forms.MouseEventHandler(this.header_MouseDown);
+            // 
+            // title
+            // 
+            this.title.AutoSize = true;
+            this.title.Font = new System.Drawing.Font("Nirmala UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.title.ForeColor = System.Drawing.Color.Black;
+            this.title.Location = new System.Drawing.Point(326, 6);
+            this.title.Name = "title";
+            this.title.Size = new System.Drawing.Size(0, 31);
+            this.title.TabIndex = 3;
             // 
             // nome
             // 
@@ -288,7 +225,7 @@
             this.resize.AutoSize = true;
             this.resize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.resize.ForeColor = System.Drawing.Color.Black;
-            this.resize.Location = new System.Drawing.Point(600, -2);
+            this.resize.Location = new System.Drawing.Point(768, 6);
             this.resize.Name = "resize";
             this.resize.Size = new System.Drawing.Size(20, 28);
             this.resize.TabIndex = 1;
@@ -300,7 +237,7 @@
             this.close.AutoSize = true;
             this.close.Cursor = System.Windows.Forms.Cursors.Hand;
             this.close.ForeColor = System.Drawing.Color.Black;
-            this.close.Location = new System.Drawing.Point(617, 0);
+            this.close.Location = new System.Drawing.Point(786, 8);
             this.close.Name = "close";
             this.close.Size = new System.Drawing.Size(24, 28);
             this.close.TabIndex = 0;
@@ -326,13 +263,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.header.ResumeLayout(false);
             this.header.PerformLayout();
             this.ResumeLayout(false);
@@ -343,22 +274,17 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button logoutButton;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button dashboardButton;
+        private System.Windows.Forms.Button trendsButton;
+        private System.Windows.Forms.Button structuresButton;
+        private System.Windows.Forms.Button addStructureButton;
         private System.Windows.Forms.Panel header;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label resize;
         private System.Windows.Forms.Label close;
         private System.Windows.Forms.Label nome;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button reservationsButton;
+        protected System.Windows.Forms.Label title;
     }
 }
 

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.rooms = new System.Windows.Forms.Label();
             this.type = new System.Windows.Forms.Label();
             this.Indirizzo = new System.Windows.Forms.Label();
@@ -43,18 +42,6 @@
             this.imglink = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Nirmala UI", 14F);
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(622, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(210, 32);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Aggiungi Struttura";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // rooms
             // 
@@ -194,10 +181,8 @@
             this.Controls.Add(this.Indirizzo);
             this.Controls.Add(this.type);
             this.Controls.Add(this.rooms);
-            this.Controls.Add(this.label1);
             this.Name = "AddStructure";
             this.Text = "Form2";
-            this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.rooms, 0);
             this.Controls.SetChildIndex(this.type, 0);
             this.Controls.SetChildIndex(this.Indirizzo, 0);
@@ -217,8 +202,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label rooms;
         private System.Windows.Forms.Label type;
         private System.Windows.Forms.Label Indirizzo;

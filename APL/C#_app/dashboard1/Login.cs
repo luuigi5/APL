@@ -13,6 +13,8 @@ namespace dashboard1
     public partial class Login : Form {
         public Login() {
             InitializeComponent();
+            usernameField.Text = "Al";
+            passwordField.Text = "apartamentPwdSyd";
         }
 
         private void pictureBox2_Click(object sender, EventArgs e) {
